@@ -146,7 +146,8 @@ class AboutPage:
         contact_info = ctk.CTkLabel(
             contact_frame,
             text="如有任何问题或建议，请联系我们：\n"
-                 "邮箱：18325838861@163.com\n",
+                 "邮箱：18325838861@163.com\n"
+                 "GitHub: https://github.com/Karin-Fur/CampusBeacon",
             font=ctk.CTkFont(family="微软雅黑", size=14),
             justify="left"
         )
