@@ -1,6 +1,7 @@
 import customtkinter as ctk
 from PIL import Image
 from components.CustomTools import CustomScrollableFrame
+import webbrowser
 
 
 class AboutPage:
@@ -135,21 +136,53 @@ class AboutPage:
 
         # 联系信息
         contact_frame = ctk.CTkFrame(scrollable_frame, fg_color="#263844", corner_radius=10)
+        contact_frame.columnconfigure(0, weight=0)
 
         contact_title = ctk.CTkLabel(
             contact_frame,
             text="联系我们",
             font=ctk.CTkFont(family="微软雅黑", size=18, weight="bold")
         )
-        contact_title.grid(row=0, column=0, padx=20, pady=(20, 10), sticky="w")
+        contact_title.grid(row=0, column=0, padx=20, pady=(20, 10), sticky="w", columnspan=2)
 
-        contact_info = ctk.CTkLabel(
+        # 文字信息
+        contact_email = ctk.CTkLabel(
             contact_frame,
-            text="如有任何问题或建议，请联系我们：\n"
-                 "邮箱: 18325838861@163.com\n"
-                 "GitHub: https://github.com/Karin-Fur/CampusBeacon",
+            text="如有任何问题或建议，请联系我们：",
             font=ctk.CTkFont(family="微软雅黑", size=14),
             justify="left"
         )
-        contact_info.grid(row=1, column=0, padx=20, pady=(0, 20), sticky="w")
+        contact_email.grid(row=1, column=0, padx=20, sticky="w", columnspan=2)
+
+        # 邮箱信息
+        contact_email = ctk.CTkLabel(
+            contact_frame,
+            text="邮箱: 18325838861@163.com",
+            font=ctk.CTkFont(family="微软雅黑", size=14),
+            justify="left"
+        )
+        contact_email.grid(row=2, column=0, padx=20, sticky="w", columnspan=2)
+
+        # GitHub
+        github_text_label = ctk.CTkLabel(
+            contact_frame,
+            text=f"GitHub: ",
+            font=ctk.CTkFont(family="微软雅黑", size=14),
+        )
+        github_text_label.grid(row=3, column=0, padx=(20, 0), pady=(0, 20), sticky="w")
+
+        # GitHub链接（可点击）
+        github_link = "https://github.com/Karin-Fur/CampusBeacon"
+        github_label = ctk.CTkLabel(
+            contact_frame,
+            text=f"{github_link}",
+            font=ctk.CTkFont(family="微软雅黑", size=14, underline=True),
+            text_color="#4CC2FF",  # 使用蓝色突出显示链接
+            cursor="hand2"  # 鼠标悬停时显示手型光标
+        )
+        github_label.grid(row=3, column=1, padx=0, pady=(0, 20), sticky="w")
+
+        # 绑定点击事件
+        github_label.bind("<Button-1>", lambda e: webbrowser.open(github_link))
+
         contact_frame.grid(row=2, pady=10, sticky="nsew")
