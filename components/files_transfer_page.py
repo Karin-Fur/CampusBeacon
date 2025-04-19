@@ -36,8 +36,8 @@ def get_file_icon(file_path, icon_time):
         icon_dark = Image.open(f"temp/{numbers_only}.png")
     # 如果没有图标，返回默认图标
     else:
-        icon_light = Image.open("icons/filetype/file_light.png")
-        icon_dark = Image.open("icons/filetype/file_dark.png")
+        icon_light = Image.open("icons/file_light.png")
+        icon_dark = Image.open("icons/file_dark.png")
 
     return icon_light, icon_dark
 
@@ -420,8 +420,8 @@ class FilesTransferPage:
         else:
             file_card.grid(column=0, sticky="nsw", padx=5, pady=5)
         # 预设文件图标
-        file_icon = ctk.CTkImage(light_image=Image.open("icons/filetype/file_light.png"),
-                                 dark_image=Image.open("icons/filetype/file_dark.png"), size=(64, 64))
+        file_icon = ctk.CTkImage(light_image=Image.open("icons/file_light.png"),
+                                 dark_image=Image.open("icons/file_dark.png"), size=(64, 64))
 
         # 如果是发送文件，直接从文件路径获取图标
         if is_sent:
